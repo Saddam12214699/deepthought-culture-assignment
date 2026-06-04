@@ -1,0 +1,30 @@
+┌─────────────────────────────────────────────────────────────────┐
+│                                                                 │
+│   PSYCHOLOGY          TECHNOLOGY           BUSINESS             │
+│   (Customer)          (Amazon Platform)    (Brand/You)          │
+│                                                                 │
+│  ┌──────────┐         ┌──────────┐        ┌──────────┐         │
+│  │ Customer │         │  Amazon  │        │  Brand   │         │
+│  │ searches │──────▶  │Algorithm │──────▶ │gets sale │         │
+│  │ a keyword│         │ runs     │        │          │         │
+│  └──────────┘         │ auction  │        └──────────┘         │
+│       │               └──────────┘             │               │
+│       │                    │                   │               │
+│  Trusts brand         Decides which        Calculates          │
+│  with good            ad to show           ROAS / ACOS         │
+│  images+reviews       based on bid         TACOS               │
+│       │               + relevance               │               │
+│       ▼                    │                   ▼               │
+│  Clicks ad ──────────────▶ Ad spend       Net Margin           │
+│       │               is charged          per unit             │
+│       ▼                                        │               │
+│  Buys product ─────────────────────────▶  Monthly Profit       │
+│                                                                 │
+│  ◀─────── Organic rank improves with sales ──────────────▶     │
+│           (TACOS drops as organic grows)                        │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+
+
+
+
