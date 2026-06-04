@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DeepThought Assignment — AI Business Analyst (Ecommerce)</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --ink:#1a1016; --bg:#faf7f3; --surface:#fff; --rose:#c94b6d; --gold:#b88b3a;
+    --muted:#7a6870; --border:#e8e0dc; --green:#1d8a6c; --red:#c94b4b; --amber:#b88b3a;
+  }
+  * { box-sizing: border-box; margin:0; padding:0; }
+  body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--ink); }
+  .hero { background:var(--ink); padding:3rem 4rem; color:#fff; }
+  .hero-tag { font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.4); margin-bottom:.8rem; }
+  .hero h1 { font-family:'Fraunces',serif; font-size:2.2rem; font-weight:300; line-height:1.2; }
+  .hero h1 em { font-style:italic; color:#f0a0b8; }
+  .hero-meta { margin-top:1.2rem; font-size:.82rem; color:rgba(255,255,255,.5); }
+  .toc { padding:2rem 4rem; display:flex; gap:1rem; flex-wrap:wrap; border-bottom:1px solid var(--border); }
+  .toc a { font-size:.8rem; background:var(--surface); border:1px solid var(--border); border-radius:4px; padding:.35rem .85rem; color:var(--muted); text-decoration:none; transition:all .2s; }
+  .toc a:hover { background:var(--rose); color:#fff; border-color:var(--rose); }
+  main { max-width:960px; margin:0 auto; padding:3rem 2rem 5rem; }
+  h2 { font-family:'Fraunces',serif; font-size:1.5rem; font-weight:600; margin-bottom:.3rem; color:var(--ink); }
+  .section-tag { font-size:.68rem; letter-spacing:.15em; text-transform:uppercase; color:var(--rose); margin-bottom:.6rem; font-weight:500; }
+  section { margin-bottom:4rem; }
+  section > p { font-size:.95rem; line-height:1.75; color:var(--muted); margin-bottom:1.2rem; font-weight:300; }
+  table { width:100%; border-collapse:collapse; margin:1.2rem 0; font-size:.85rem; }
+  th { text-align:left; padding:.6rem .9rem; background:var(--ink); color:#fff; font-weight:500; font-size:.75rem; letter-spacing:.05em; }
+  td { padding:.55rem .9rem; border-bottom:1px solid var(--border); }
+  tr:nth-child(even) td { background:#fbf8f6; }
+  .highlight-row td { background:#fff8f0; font-weight:500; }
+  .number { font-family:monospace; }
+  .green { color:var(--green); font-weight:600; }
+  .red { color:var(--red); font-weight:600; }
+  .amber { color:var(--amber); font-weight:600; }
+  .card { background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:1.4rem; margin:1rem 0; }
+  .card h3 { font-size:.9rem; font-weight:600; margin-bottom:.5rem; }
+  .card p { font-size:.85rem; line-height:1.7; color:var(--muted); font-weight:300; }
+  .obs-card { border-left:4px solid var(--rose); padding:.9rem 1.2rem; background:#fff8f9; border-radius:0 8px 8px 0; margin:.8rem 0; }
+  .obs-label { font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; color:var(--rose); margin-bottom:.3rem; font-weight:500; }
+  .obs-card p { font-size:.87rem; line-height:1.65; color:var(--ink); }
+  .formula-box { background:#1a1016; color:#e4e6f0; border-radius:8px; padding:1rem 1.4rem; font-family:monospace; font-size:.85rem; margin:.8rem 0; line-height:1.7; }
+  .scenario-header { display:flex; align-items:center; gap:.6rem; margin-bottom:.8rem; }
+  .scenario-badge { background:var(--rose); color:#fff; font-size:.7rem; padding:.2rem .7rem; border-radius:3px; font-weight:600; }
+  .cols2 { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; }
+  @media(max-width:640px){ .cols2 { grid-template-columns:1fr; } .hero, .toc { padding:2rem; } }
+  .divider { height:1px; background:var(--border); margin:2.5rem 0; }
+  .note-box { background:#fffbf0; border:1px solid #f0d080; border-radius:8px; padding:1rem 1.2rem; margin:1rem 0; font-size:.83rem; color:#7a5c00; line-height:1.6; }
+  .stat-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin:1rem 0; }
+  .stat-card { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:1rem; text-align:center; }
+  .stat-num { font-family:'Fraunces',serif; font-size:1.6rem; color:var(--rose); }
+  .stat-label { font-size:.72rem; color:var(--muted); margin-top:.2rem; }
+  @media(max-width:640px){ .stat-grid { grid-template-columns:1fr 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">DeepThought Recruitment Assignment · AI Business Analyst (Ecommerce)</div>
+  <h1>Amazon Advertising<br/><em>Economics & Analysis</em></h1>
+  <div class="hero-meta">GlowNest Case Study · Task 1, 2 & 3 Written Deliverables · Submitted June 2026</div>
+</div>
+
+<div class="toc">
+  <a href="#task1">Task 1: Viability Analysis</a>
+  <a href="#task2">Task 2: Model Guide</a>
+  <a href="#task3a">Task 3A: Status Update</a>
+  <a href="#task3b">Task 3B: MD Talking Points</a>
+</div>
+
+<main>
+
+<!-- ══════════════════════════════════ TASK 1 ══════════════════════════════════ -->
+<section id="task1">
+  <div class="section-tag">Task 1</div>
+  <h2>Campaign Viability Analysis — GlowNest</h2>
+  <p>GlowNest sells a Premium Face Serum at ₹800. Monthly ad spend is ₹3L generating 1,500 ad-attributed sales, alongside 2,000 organic sales. Fixed costs are ₹1.5L/month.</p>
+
+  <div class="card">
+    <h3>Q1 — Unit Economics (Ad-Attributed Sales)</h3>
+  </div>
+
+  <table>
+    <thead><tr><th>Metric</th><th>Formula</th><th>Calculation</th><th>Result</th></tr></thead>
+    <tbody>
+      <tr><td>Gross Margin / Unit</td><td>SP − COGS</td><td>800 − 280</td><td class="number green">₹520</td></tr>
+      <tr><td>Amazon Fee / Unit</td><td>SP × 12%</td><td>800 × 0.12</td><td class="number red">₹96</td></tr>
+      <tr><td>Ad Cost / Unit</td><td>Ad Spend ÷ Ad Units</td><td>3,00,000 ÷ 1,500</td><td class="number red">₹200</td></tr>
+      <tr class="highlight-row"><td><strong>Net Margin / Ad Unit</strong></td><td>GM − Fee − Ad Cost</td><td>520 − 96 − 200</td><td class="number green"><strong>₹224</strong></td></tr>
+    </tbody>
+  </table>
+
+  <div class="obs-card">
+    <div class="obs-label">Interpretation</div>
+    <p>After all variable costs, GlowNest earns ₹224 per ad-driven sale — a 28% net margin. Healthy for premium skincare, but the ad cost per unit (₹200 = 25% of selling price) is something to watch as campaigns scale.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="card"><h3>Q2 — Monthly Profitability</h3></div>
+  <table>
+    <thead><tr><th>Revenue Stream</th><th>Units</th><th>Net Margin/Unit</th><th>Contribution</th></tr></thead>
+    <tbody>
+      <tr><td>Ad-attributed sales</td><td>1,500</td><td>₹224</td><td class="number">₹3,36,000</td></tr>
+      <tr><td>Organic sales</td><td>2,000</td><td>₹424</td><td class="number">₹8,48,000</td></tr>
+      <tr><td>Total Contribution</td><td>3,500</td><td>—</td><td class="number green">₹11,84,000</td></tr>
+      <tr><td>Less: Fixed Costs</td><td>—</td><td>—</td><td class="number red">−₹1,50,000</td></tr>
+      <tr class="highlight-row"><td><strong>Monthly Profit</strong></td><td>—</td><td>—</td><td class="number green"><strong>₹10,34,000</strong></td></tr>
+    </tbody>
+  </table>
+  <div class="obs-card">
+    <div class="obs-label">Key Insight</div>
+    <p>Organic sales (₹8.48L) contribute more than 2× the ad channel (₹3.36L). This is a healthy sign — GlowNest is not purely dependent on ad spend to generate revenue. The organic base provides profitability cushion.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="card"><h3>Q3 — ACOS and TACOS</h3></div>
+  <div class="formula-box">
+ACOS = Ad Spend ÷ Ad Revenue × 100
+     = 3,00,000 ÷ (800 × 1,500) × 100
+     = 3,00,000 ÷ 12,00,000 × 100
+     = 25%
+
+TACOS = Ad Spend ÷ Total Revenue × 100
+      = 3,00,000 ÷ (800 × 3,500) × 100
+      = 3,00,000 ÷ 28,00,000 × 100
+      = 10.71%
+  </div>
+
+  <div class="cols2">
+    <div class="obs-card">
+      <div class="obs-label">ACOS 25% — Borderline Acceptable ✓</div>
+      <p>For a brand with 65% gross margin (₹520 on ₹800), the unit-level break-even ACOS is 53% (= GM% − Amazon Fee%). At 25%, GlowNest has significant headroom. However, the target should be 15–20% as campaigns mature and efficiency improves.</p>
+    </div>
+    <div class="obs-card">
+      <div class="obs-label">TACOS 10.71% — Healthy ✅</div>
+      <p>Industry benchmark for TACOS is typically 8–15% for a growing brand. Under 11% is strong. The large organic base (2,000 units) pulls TACOS down, signalling brand equity building. This is the metric to track month-over-month.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="card"><h3>Q4 — Break-Even Ad Spend</h3></div>
+  <div class="formula-box">
+Setting Total Monthly Profit = 0, holding ad units constant at 1,500:
+
+[(520 − 96 − X/1500) × 1500] + [424 × 2000] − 1,50,000 = 0
+[6,36,000 − X] + 8,48,000 − 1,50,000 = 0
+13,34,000 = X
+
+Break-Even Ad Spend = ₹13,34,000/month
+
+Unit-level break-even (where ad sales alone cover costs):
+Net Margin = 0 → Ad Cost/Unit = ₹424
+Break-even Spend = 424 × 1,500 = ₹6,36,000  →  ACOS = 53%
+  </div>
+  <div class="obs-card">
+    <div class="obs-label">Practical Guardrail</div>
+    <p>While the theoretical ceiling is ₹13.34L (subsidised by organic), the operational rule should be: never let ACOS exceed 53% (unit-level break-even). At the current ₹3L spend, GlowNest is well within safe territory. The meaningful risk threshold is ACOS > 40%, which starts significantly compressing unit margins.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="card">
+    <div class="scenario-header"><div class="scenario-badge">SCENARIO</div><h3>Q5 — ACOS Worsens to 40%, Ad Units Drop to 1,200</h3></div>
+  </div>
+  <div class="formula-box">
+Ad Revenue (new) = 800 × 1,200 = ₹9,60,000
+Ad Spend at 40% ACOS = 9,60,000 × 0.40 = ₹3,84,000
+Ad Cost per Unit = 3,84,000 ÷ 1,200 = ₹320
+Net Margin per Ad Unit = 520 − 96 − 320 = ₹104
+
+New Profit = (104 × 1,200) + (424 × 2,000) − 1,50,000
+           = 1,24,800 + 8,48,000 − 1,50,000
+           = ₹8,22,800
+  </div>
+  <table>
+    <thead><tr><th>Metric</th><th>Before</th><th>After</th><th>Change</th></tr></thead>
+    <tbody>
+      <tr><td>Monthly Profit</td><td class="number">₹10,34,000</td><td class="number">₹8,22,800</td><td class="red">−₹2,11,200 (−20.4%)</td></tr>
+      <tr><td>Net Margin / Ad Unit</td><td class="number">₹224</td><td class="number">₹104</td><td class="red">−₹120 (−53.6%)</td></tr>
+    </tbody>
+  </table>
+  <div class="obs-card">
+    <div class="obs-label">What I Would Recommend to GlowNest</div>
+    <p><strong>1. Pause broad-match campaigns</strong> and concentrate budget on exact/phrase match for top 10 converting keywords — this is the most common cause of ACOS degradation.<br/><br/>
+    <strong>2. Negative keyword audit immediately</strong> — worsening ACOS signals irrelevant click spend.<br/><br/>
+    <strong>3. Check listing CTR and CVR</strong> — if conversion rate dropped (often linked to listing quality or competitor pricing), ad efficiency falls even with good bids.<br/><br/>
+    <strong>4. Do not panic-cut ad spend entirely</strong> — organic rankings are partially sustained by ad activity. A complete pause can hurt keyword ranking and compound the problem.<br/><br/>
+    <strong>5. Set a 30-day ACOS recovery target of ≤30%</strong> as a measurable milestone to report to the client.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="card">
+    <div class="scenario-header"><div class="scenario-badge">SCENARIO</div><h3>Q6 — Double Ad Spend to ₹6L, Ad Units to 2,500</h3></div>
+  </div>
+  <div class="formula-box">
+Ad Cost per Unit = 6,00,000 ÷ 2,500 = ₹240
+Net Margin per Ad Unit = 520 − 96 − 240 = ₹184
+
+New Profit = (184 × 2,500) + (424 × 2,000) − 1,50,000
+           = 4,60,000 + 8,48,000 − 1,50,000
+           = ₹11,58,000
+
+New ACOS = 6,00,000 ÷ (800 × 2,500) × 100 = 30%
+New TACOS = 6,00,000 ÷ (800 × 4,500) × 100 = 16.67%
+  </div>
+  <table>
+    <thead><tr><th>Metric</th><th>Before (₹3L spend)</th><th>After (₹6L spend)</th></tr></thead>
+    <tbody>
+      <tr><td>Monthly Profit</td><td class="number">₹10,34,000</td><td class="number green">₹11,58,000 (+₹1,24,000)</td></tr>
+      <tr><td>ACOS</td><td class="number green">25%</td><td class="number amber">30%</td></tr>
+      <tr><td>TACOS</td><td class="number green">10.71%</td><td class="number amber">16.67%</td></tr>
+      <tr><td>Incremental spend → incremental profit</td><td colspan="2" class="amber">₹3L extra → ₹1.24L profit = 41% ROI on marginal spend</td></tr>
+    </tbody>
+  </table>
+  <div class="obs-card">
+    <div class="obs-label">Verdict: Marginally Yes, But Proceed Carefully</div>
+    <p>Profit increases but with worsening efficiency — TACOS crosses 15% and enters the "watch closely" zone. The marginal ROI of 41% is positive but not compelling.<br/><br/>
+    <strong>My advice:</strong> Don't jump from ₹3L to ₹6L in one step. Increase to ₹4L first, monitor ACOS and conversion data for 3–4 weeks, then decide. The Amazon ad algorithm needs time to allocate larger budgets efficiently — front-loading can cause ACOS to spike before stabilising, and the real results only become visible in weeks 6–8.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ TASK 2 ══════════════════════════════════ -->
+<section id="task2">
+  <div class="section-tag">Task 2</div>
+  <h2>Dynamic Profitability Model — Google Sheets Setup</h2>
+  <p>The interactive model is available as a separate HTML file. Below are the exact Google Sheets formulas to replicate it.</p>
+
+  <div class="note-box">📌 The interactive HTML version of this model is attached separately as <strong>task2_profitability_model.html</strong> — open in any browser to use the live calculator with scenario buttons.</div>
+
+  <div class="card"><h3>Input Cells (Column B, highlighted yellow in Sheet)</h3></div>
+  <table>
+    <thead><tr><th>Cell</th><th>Label</th><th>Default Value</th></tr></thead>
+    <tbody>
+      <tr><td>B2</td><td>Selling Price (SP)</td><td>800</td></tr>
+      <tr><td>B3</td><td>COGS</td><td>280</td></tr>
+      <tr><td>B4</td><td>Amazon Referral Fee %</td><td>12%</td></tr>
+      <tr><td>B5</td><td>Monthly Ad Spend</td><td>300000</td></tr>
+      <tr><td>B6</td><td>Units Sold via Ads</td><td>1500</td></tr>
+      <tr><td>B7</td><td>Organic Units Sold</td><td>2000</td></tr>
+      <tr><td>B8</td><td>Fixed Costs (monthly)</td><td>150000</td></tr>
+    </tbody>
+  </table>
+
+  <div class="card"><h3>Output Formulas (Column B)</h3></div>
+  <table>
+    <thead><tr><th>Cell</th><th>Label</th><th>Formula</th></tr></thead>
+    <tbody>
+      <tr><td>B11</td><td>Gross Margin / Unit</td><td class="number">=B2-B3</td></tr>
+      <tr><td>B12</td><td>Amazon Fee / Unit</td><td class="number">=B2*B4</td></tr>
+      <tr><td>B13</td><td>Ad Cost / Unit</td><td class="number">=IFERROR(B5/B6,0)</td></tr>
+      <tr><td>B14</td><td>Net Margin / Ad Unit</td><td class="number">=B11-B12-B13</td></tr>
+      <tr><td>B15</td><td>Net Margin / Organic Unit</td><td class="number">=B11-B12</td></tr>
+      <tr><td>B16</td><td>Total Monthly Revenue</td><td class="number">=B2*(B6+B7)</td></tr>
+      <tr class="highlight-row"><td>B17</td><td>Total Monthly Profit</td><td class="number">=(B14*B6)+(B15*B7)-B8</td></tr>
+      <tr><td>B18</td><td>ACOS</td><td class="number">=IFERROR(B5/(B2*B6),0) → format %</td></tr>
+      <tr><td>B19</td><td>TACOS</td><td class="number">=IFERROR(B5/B16,0) → format %</td></tr>
+      <tr><td>B20</td><td>Break-Even Ad Spend</td><td class="number">=(B11-B12)*B6+B15*B7-B8</td></tr>
+    </tbody>
+  </table>
+
+  <div class="card"><h3>Scenario Results Summary</h3></div>
+  <table>
+    <thead><tr><th>Scenario</th><th>Monthly Profit</th><th>ACOS</th><th>TACOS</th><th>Key Signal</th></tr></thead>
+    <tbody>
+      <tr><td>Base Case</td><td class="number green">₹10,34,000</td><td class="number green">25%</td><td class="number green">10.71%</td><td>Healthy baseline</td></tr>
+      <tr><td>Price to ₹950</td><td class="number green">₹12,29,000</td><td class="number green">21.1%</td><td class="number green">9.3%</td><td>Strong upside if market allows</td></tr>
+      <tr><td>COGS +20%</td><td class="number amber">₹8,54,000</td><td class="number green">25%</td><td class="number green">10.71%</td><td>Margin compression — monitor</td></tr>
+      <tr><td>Organic 3,500 units</td><td class="number green">₹11,97,000</td><td class="number green">25%</td><td class="number green">7.94%</td><td>TACOS dividend of brand-building</td></tr>
+      <tr><td>SP drops to ₹700</td><td class="number red">₹6,54,000</td><td class="number amber">28.6%</td><td class="number amber">12.24%</td><td>Avoid. Protect premium positioning.</td></tr>
+      <tr><td>Scale to ₹6L spend</td><td class="number green">₹11,58,000</td><td class="number amber">30%</td><td class="number red">16.67%</td><td>Marginal. Scale gradually, not at once.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ══════════════════════════════════ TASK 3A ══════════════════════════════════ -->
+<section id="task3a">
+  <div class="section-tag">Task 3 — Part A</div>
+  <h2>Weekly Account Status Update</h2>
+  <p><strong>To:</strong> Team Lead &nbsp;|&nbsp; <strong>Re:</strong> 3 Brand Accounts — Weekly Status</p>
+
+  <div class="stat-grid">
+    <div class="stat-card"><div class="stat-num green">4.2</div><div class="stat-label">FreshBasket ROAS</div></div>
+    <div class="stat-card"><div class="stat-num red">2.1</div><div class="stat-label">UrbanPulse ROAS</div></div>
+    <div class="stat-card"><div class="stat-num green">3.5</div><div class="stat-label">NestWell ROAS</div></div>
+    <div class="stat-card"><div class="stat-num amber">28h</div><div class="stat-label">Total Hours This Week</div></div>
+  </div>
+
+  <div class="card">
+    <h3>Brand A — FreshBasket (Organic Snacks) ✅</h3>
+    <p>ROAS 4.2, above benchmark. Campaigns are healthy — no structural issues, bids stable, keyword mix performing. Spent 9 hours this week on keyword optimisation and weekly report.<br/><br/>
+    <strong>Flag:</strong> Client asked Tuesday: "Can you explain the daily spend breakdown columns in the report?" — noting this because Brand C asked the same question this week (see cross-account pattern below).</p>
+  </div>
+
+  <div class="card">
+    <h3>Brand B — UrbanPulse (Men's Grooming) ⚠️</h3>
+    <p>ROAS 2.1, below target of 3.0. Month 2 of engagement. Spent 12 hours this week on deep keyword restructuring, negative keyword audit, and competitive analysis — the heaviest investment across all three accounts.<br/><br/>
+    Client emailed: "We're not seeing results. Are we sure this is working? Our last agency showed better ROAS in Month 1." — Response drafted explaining that Month 1 legacy ROAS was likely a broad-match honeymoon effect; structural work takes 6–10 weeks to show in numbers.<br/><br/>
+    <strong>Two additional flags:</strong><br/>
+    1. Product listing images are visually weaker than competitors in the same subcategory. This directly hurts CTR/CVR on every ad we run — worth flagging to their creative team.<br/>
+    2. 12 hours of work this week is invisible to the client. They see only a ROAS number. If we don't make this effort visible (e.g., a brief "what we did and why" section in the report), this account is a churn risk at Month 3 regardless of whether ROAS improves.</p>
+  </div>
+
+  <div class="card">
+    <h3>Brand C — NestWell (Home Fragrances) ✅</h3>
+    <p>ROAS 3.5, on target. Routine optimisation and monthly report prep. 7 hours this week, no performance issues.<br/><br/>
+    Client asked Wednesday: "Can you explain the daily spend breakdown columns? The columns are confusing."<br/><br/>
+    <strong>Flag:</strong> NestWell has an active Flipkart store but has never mentioned Flipkart advertising. No budget allocated there. This is either a strategic deprioritisation or a blind spot — worth asking in the next call.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-tag">V3 Pattern Observations</div>
+
+  <div class="obs-card">
+    <div class="obs-label">Pattern 1 — Report Design Problem (Not a Client Problem)</div>
+    <p>Brand A and Brand C asked <strong>the exact same question about report columns</strong> in the same week — independently. Two out of three clients can't read our standard weekly report. This is not a client education issue; it's a report design issue. I'd recommend we spend 2 hours revising the report template: rename columns to plain English, add a one-line legend at the top, and include a "plain language" summary above the data. This is a one-time fix that prevents the same friction for every future client.</p>
+  </div>
+
+  <div class="obs-card">
+    <div class="obs-label">Pattern 2 — Invisible Work = Churn Risk</div>
+    <p>UrbanPulse consumed 12 hours this week, but from the client's view, "nothing is happening." Across all three brands, our effort is invisible unless a KPI moves. I'd suggest a lightweight "3 things we did this week + why" section in every weekly report — not to justify ourselves, but because clients who understand what we're doing are less likely to churn when numbers temporarily dip.</p>
+  </div>
+
+  <div class="obs-card">
+    <div class="obs-label">Pattern 3 — Untapped Channel (NestWell / Flipkart)</div>
+    <p>NestWell has an active Flipkart storefront with zero ad spend. If their Amazon ROAS is 3.5, Flipkart's lower CPCs (less mature ad platform) could produce even better efficiency. This is either a cross-sell conversation or at minimum a question: "Was Flipkart advertising a deliberate choice to deprioritise?" If not, this is a revenue opportunity they've been leaving on the table.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ TASK 3B ══════════════════════════════════ -->
+<section id="task3b">
+  <div class="section-tag">Task 3 — Part B</div>
+  <h2>MD Talking Points — UrbanPulse (Men's Grooming)</h2>
+  <p>Context: UrbanPulse MD requests a 15-minute call on Amazon growth plans for next quarter. I chose UrbanPulse because the gap between current performance (ROAS 2.1) and growth potential makes this the most strategically interesting conversation — and the highest-stakes account to retain.</p>
+
+  <div class="card">
+    <h3>1. Where We Stand — Honest Framing (2 min)</h3>
+    <p>"Your Amazon channel is in Month 2 of a structural rebuild. The previous agency's Month 1 ROAS numbers looked stronger, but the foundation was broad targeting generating low-quality traffic. We've rebuilt for precision. The ROAS will reflect this in weeks 6–10. I want to be transparent about that timeline so we're aligned."</p>
+  </div>
+
+  <div class="card">
+    <h3>2. What the Category Data Shows (3 min)</h3>
+    <p>"Men's grooming on Amazon India grew roughly 38% last year. Your category is competitive — the top 3 brands are investing in Sponsored Brand Video ads and running promotions on high-traffic events (Prime Day, Diwali). UrbanPulse isn't doing either yet. That's not a criticism, it's a window: the opportunity to gain share before those placements become more expensive is open right now, not next year."</p>
+  </div>
+
+  <div class="card">
+    <h3>3. The Listing Problem = Revenue Waiting to Be Unlocked (3 min)</h3>
+    <p>"There's one lever that no amount of ad spend can fix on its own: if the product page doesn't convert, we're paying to bring people to a door they won't walk through. Your top SKUs have weaker images than direct competitors in the same search results. A one-time investment in lifestyle photography — typically ₹30–50K — can improve conversion rate by 15–25%. At your current traffic, that's ₹2–3L in additional monthly revenue with zero incremental ad spend. It's the highest-ROI action available to you right now."</p>
+  </div>
+
+  <div class="card">
+    <h3>4. The 90-Day Growth Picture (4 min)</h3>
+    <p>"If we reach ROAS 3.0+ by Month 3 (which is the expected outcome of the restructuring we've done), the business case for scaling ad spend to ₹5–6L/month becomes clear. That trajectory could take your Amazon revenue to approximately ₹X by Month 6. I'd like to model this properly for you — can you share your total Amazon revenue for the last 3 months so I can build a realistic projection rather than an estimate?"</p>
+  </div>
+
+  <div class="card">
+    <h3>5. Questions I'd Ask the MD</h3>
+    <p>• "Where does Amazon fit in your overall strategy — is it your primary D2C growth channel, or one of several equal channels?"<br/><br/>
+    • "Is there a budget available for creative (listing images, A+ content) separate from ad spend? That's the single highest-leverage fix right now."<br/><br/>
+    • "Are there new product launches planned in the next 6 months? Launch campaigns benefit enormously from early ad investment to accelerate keyword ranking — it's significantly cheaper to buy rank at launch than to recapture it later."<br/><br/>
+    • "Is Flipkart an active channel for you? We've seen brands in adjacent categories find Flipkart's ad platform more efficient right now due to lower competition."</p>
+  </div>
+
+  <div class="obs-card">
+    <div class="obs-label">How My Thinking Shifted (Status Update → MD Talking Points)</div>
+    <p>In the status update for the team lead, I was thinking operationally: ROAS numbers, hours invested, client sentiment, what to do next week. When I shifted to preparing for the MD call, I stopped asking "how are the campaigns doing?" and started asking "where is this business going, and what is blocking it?"<br/><br/>
+    The listing image observation is a small operational flag in a status update. In an MD conversation, it becomes: "there's ₹2–3L/month in revenue sitting here that doesn't need a single rupee of ad spend." Same data point, completely different frame.<br/><br/>
+    <strong>Information I'd need that I don't currently have:</strong> UrbanPulse's total Amazon revenue (not just ad-attributed), their gross margin structure, whether they have D2C or Flipkart presence, their target CAC, and any upcoming product launches. Without these, the growth story is incomplete — I can show the direction but not a precise destination.</p>
+  </div>
+</section>
+
+</main>
+</body>
+</html>
